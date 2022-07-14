@@ -1,0 +1,384 @@
+/* Global */
+
+:root {
+    --white: #fff;
+    --off-white: #f0f2f5;
+    --dark-green: #2d4a22;
+    --green: #12a454;
+    --soft-green: #749e65;
+    --dark-blue: #363f5f;
+    --light-grey: #969cb3;
+    --red: #e92929;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 93.75%; /* 15px*/
+  }
+  
+  body {
+    background-color: var(--off-white);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .container {
+    width: min(90vw, 800px);
+    margin: auto;
+  }
+  
+  /* sr-only - estamos escondendo Transaction and Balance, mas deixando acessivel aos leitores de tela (acessibilidade) */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* titles */
+  
+  h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-blue);
+    font-weight: normal;
+  }
+  
+  /* Links & Buttons */
+  
+  a {
+    color: var(--soft-green);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--dark-green);
+  }
+  
+  .button.new {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  /* Header */
+  
+  #header {
+    background: var(--dark-green);
+    padding: 2rem 0 10rem;
+    text-align: center;
+  }
+  
+  #logo {
+    color: var(--white);
+    font-weight: 100;
+  }
+  
+  /* Balance */
+  
+  #balance {
+    margin-top: -8rem;
+  }
+  
+  #balance h2 {
+    color: var(--white);
+    /* font-weight: 100; */
+  }
+  
+  /* Cards */
+  
+  .card {
+    background: var(--white);
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  .card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+  }
+  
+  .card.total {
+    background: var(--soft-green);
+    color: var(--white);
+  }
+  
+  /* Table */
+  
+  #transaction {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-spacing: 0 0.5rem;
+    color: var(--light-grey);
+  }
+  
+  .data-table tbody tr {
+    opacity: 0.7;
+  }
+  
+  .data-table tbody tr:hover {
+    opacity: 1;
+  }
+  
+  .data-table thead th {
+    background: var(--white);
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: left;
+  }
+  
+  .data-table tbody td {
+    background: var(--white);
+    padding: 1rem 2rem;
+  }
+  
+  .data-table th:first-child,
+  .data-table td:first-child {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  
+  .data-table th:last-child,
+  .data-table td:last-child {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  td.description {
+    color: var(--dark-blue);
+  }
+  
+  td.income {
+    color: var(--soft-green);
+  }
+  
+  td.expense {
+    color: var(--red);
+  }
+  
+  /* Footer */
+  
+  .footer {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    color: var(--dark-blue);
+    opacity: 0.7;
+  }
+  
+  /* Modal */
+  
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal {
+    background: var(--off-white);
+    padding: 2.4rem;
+    width: 450px;
+    margin: auto;
+    position: relative;
+    z-index: 200;
+  }
+  
+  /* Modal-Form */
+  
+  #form {
+    max-width: 500px;
+    margin: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+  }
+  
+  #form h2 {
+    margin-top: 0;
+  }
+  
+  #form input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+  }
+
+  form input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none
+  }
+
+  form button {
+    width: 30%;
+    height: 30px;
+    background-color: green;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  form a {
+    width: 30%;
+    height: 30px;
+    color: white;
+  }
+  
+  .input-group {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    background-color: var(--white);
+  }
+  
+  .input-select {
+    width: 100%;
+    padding: 0.8rem;
+    display: flex;
+    margin-top: 0.5rem;
+    background-color: var(--white);
+  }
+  
+  .input-select label {
+    margin-left: 0.5rem;
+    flex: 1;
+    border: none;
+  }
+  
+  .input-select select {
+    margin-left: 0.5rem;
+    flex: 2;
+    border: none;
+  }
+  
+  .input-radio-group {
+    margin-top: 0.5rem;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-radio-group input {
+    flex: 1;
+  }
+  
+  .input-radio-group label {
+    flex: 3;
+  }
+  
+  .input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .input-group.actions a {
+    background: var(--red);
+  }
+  
+  .btn-form {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-form.add {
+    background-color: var(--dark-green);
+    color: var(--white);
+    cursor: pointer;
+    
+  }
+  
+  .btn-form.add:hover {
+    background: var(--white);
+    color: var(--dark-green);
+  }
+  
+  .btn-form.btn-cancel {
+    background-color: var(--red);
+    color: var(--white);
+  }
+  
+  .btn-form.btn-cancel:hover {
+    background: var(--white);
+    color: var(--red);
+  }
+  
+  .btn-exit {
+    background: var(--red);
+    color: var(--white);
+    height: 60px;
+    width: 60px;
+    padding: 20px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+  }
+  
+  .btn-exit:hover {
+    background: var(--white);
+    color: var(--red);
+  }
+  
+  /* responsividade */
+  
+  @media (min-width: 800px) {
+    html {
+      font-size: 87.5%;
+    }
+  
+    #balance {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+  
