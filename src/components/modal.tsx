@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface typeData {
   id: string,
@@ -61,39 +61,43 @@ export default function Modal({ isActive, state, setdata, data }: isActiveType) 
           <form action="">
             <div className="input-group">
               <label className="sr-only" htmlFor="description">Descrição</label>
-              <input type="text" id="description" onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
+              <input type="text" id="description" onChange={(e) => setDescription(e.target.value)} placeholder="Description" value={description} />
             </div>
 
             <div className="input-group">
               <label className="sr-only" htmlFor="amount">Valor</label>
-              <input type="text" id="amount" onChange={(e) => setValue(e.target.value)} placeholder="0.00" />
+              <input type="text" id="amount" onChange={(e) => setValue(e.target.value)} placeholder="0.00" value={value} />
             </div>
 
             <div className="input-group">
               <label className="sr-only" htmlFor="date">Date</label>
-              <input type="text" id="date" onChange={(e) => setDate(e.target.value)} />
+              <input type="date" id="date" onChange={(e) => setDate(e.target.value)} placeholder="Data" value={date} />
             </div>
 
             <div className="input-select">
               <label htmlFor="category">Category</label>
-              <select name="category" onChange={(e) => setCategory(e.target.value)} id="category">
-              <option value="">Selecionar</option>
+              <select name="category" onChange={(e) => setCategory(e.target.value)} id="category" value={category}>
+                <option value="">Selecionar</option>
                 <option value="Twitch">Twitch</option>
                 <option value="VPS">Vps</option>
                 <option value="Outros">Outros</option>
               </select>
             </div>
 
-            <div className="input-group">
-              <label className="sr-only" htmlFor="type">Tipo</label>
-              <input type="text" id="type" onChange={(e) => setType(e.target.value)} />
+            <div className="input-select">
+              <label htmlFor="type">Tipo</label>
+              <select id="type" name="type" onChange={(e) => setType(e.target.value)} value={type}>
+                <option value="">Selecionar</option>
+                <option value="saida">Saida</option>
+                <option value="entrada">Entrada</option>
+              </select>
             </div>
 
             <div className="input-group actions ">
-              <button className="btn-htmlForm add" onClick={ dataSend} type="submit">Add</button>
-              <a href="#" className="btn-htmlForm btn-cancel" data-btn="close">Cancel</a>
+              <button className="btn-form add" onClick={dataSend} type="submit">Add</button>
+              <a href="#" onClick={closeModal} className="btn-form btn-cancel" data-btn="close">Cancel</a>
             </div>
-            <a href="#" onClick={closeModal} className="btn-htmlForm cancel btn-exit" data-btn="close">X</a>
+            <a href="#" onClick={closeModal} className="btn-form cancel btn-exit" data-btn="close">X</a>
           </form>
         </div>
       </div>

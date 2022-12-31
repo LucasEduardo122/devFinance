@@ -33,6 +33,10 @@ export default function Home() {
         setActiveModal(true);
     }
 
+    function removeAmount(keys: any) {
+        setData(data.filter(item => item.description !== keys));
+    }
+
     return (
         <>
             <Header />
@@ -84,14 +88,14 @@ export default function Home() {
                         <tbody>
                             {data.length != 0
                                 ?
-                                data.map(dados => {
+                                data.map((dados, key) => {
                                     return (
                                         <tr key={dados.id}>
                                             <td className="description">{dados.description}</td>
                                             <td className={`${dados.type == 'saida' ? 'expense' : 'income'}`}>R${dados.value}</td>
                                             <td className="date">{dados.date}</td>
                                             <td>{dados.category}</td>
-                                            <td>{dados.type == 'entrada' ? <img src="/src/assets/plus.svg" alt="remove valor" /> : <img src="/src/assets/minus.svg" alt="adiciona valor" />}</td>
+                                            <td onClick={() => removeAmount(dados.description)}>{dados.type == 'entrada' ? <img src="/src/assets/plus.svg" alt="remove valor" /> : <img src="/src/assets/minus.svg" alt="adiciona valor" />}</td>
                                         </tr>
                                     )
                                 })
